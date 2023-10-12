@@ -1,0 +1,9 @@
+pandas
+scikit-learn
+matplotlib
+jupyterlab
+notebook
+mecab-python3
+janome
+nlplot
+plotly

@@ -3,6 +3,8 @@
 FROM python:3.9.7-buster
 
 ADD clean-layer.sh  /tmp/clean-layer.sh
+RUN chmod +x /tmp/clean-layer.sh
+COPY requirements.txt .
 
 ENV LANG ja_JP.UTF-8
 ENV LANGUAGE ja_JP:ja
@@ -29,11 +31,4 @@ RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
   /tmp/clean-layer.sh
 
 # python ライブラリのインストール
-RUN python -m pip install pandas
-RUN python -m pip install scikit-learn
-RUN python -m pip install matplotlib
-RUN python -m pip install jupyterlab
-RUN python -m pip install notebook
-RUN python -m pip install mecab-python3
-RUN python -m pip install janome
-RUN python -m pip install nlplot plotly
+RUN python -m pip install -r requirements.txt
