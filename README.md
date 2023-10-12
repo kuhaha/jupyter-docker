@@ -48,7 +48,8 @@
    
    ```$ docker exec -it <jupyter container> /bin/bash```  
    
-   ```$ jupyter notebook list```  
+   ```$ jupyter notebook list```
+   
     Currently running servers:
     http://0.0.0.0:8888/?token=yyyy :: /home/jovyan
     jovyan@e22198a8202b:~$ exit
