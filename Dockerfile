@@ -14,10 +14,12 @@ ENV TZ JST-9
 RUN apt-get -y update && \
   apt-get install -y locales && \
   localedef -f UTF-8 -i ja_JP ja_JP.UTF-8 && \
-  apt-get install -y fonts-noto-cjk
+  apt-get install -y fonts-noto-cjk && \
+  /tmp/clean-layer.sh
 
 RUN apt-get install -y mecab mecab-ipadic-utf8 libmecab-dev && \
-  apt-get install -y git make curl xz-utils file sudo
+  apt-get install -y git make curl xz-utils file sudo && \
+  /tmp/clean-layer.sh
 
 # mecab-ipadic-NEologdのインストール
 RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
@@ -25,7 +27,8 @@ RUN git clone --depth 1 https://github.com/neologd/mecab-ipadic-neologd.git && \
   ./bin/install-mecab-ipadic-neologd -n -y && \
   echo dicdir = `mecab-config --dicdir`"/mecab-ipadic-neologd">/etc/mecabrc && \
   sudo cp /etc/mecabrc /usr/local/etc && \
-  cd ..
-  
+  cd .. && \
+  /tmp/clean-layer.sh
+
 # python ライブラリのインストール
 RUN python -m pip install -r requirements.txt
